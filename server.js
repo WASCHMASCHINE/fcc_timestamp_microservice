@@ -38,7 +38,7 @@ function getNaturalString(date){
 	return ""+month+" "+(date.getDay()+1)+", "+date.getFullYear();
 }
 
-app.get('/*', function(req, res){
+app.get('/:time', function(req, res){
 	var stringParameter = req.path.substr(1);
 	var reNaturalTime = /(January|February|March|April|May|June|July|September|August|October|November|December)(%20)(\d+),(%20)(\d{4})/g;
 	var resultNatural = reNaturalTime.exec(stringParameter);
