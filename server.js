@@ -22,7 +22,7 @@ function getMonth(index){
 
 function getNaturalString(date){
 	var month = getMonth(date.getMonth());
-	return ""+month+" "+(date.getDay()+1)+", "+date.getFullYear();
+	return ""+month+" "+(date.getDate())+", "+date.getFullYear();
 }
 
 app.get('/:time', function(req, res){
@@ -41,7 +41,9 @@ app.get('/:time', function(req, res){
 		res.send(jsonObject);
 	} else if (resultUnix !== null){ // UNIX
 		var d = new Date(Number(stringParameter)*1000);
+		console.log(d);
 		var naturalString = getNaturalString(d);
+		console.log(naturalString);
 		var jsonObject = {"unix": d.getTime()/1000, "natural": naturalString}
 		res.send(jsonObject);
 	} else {
